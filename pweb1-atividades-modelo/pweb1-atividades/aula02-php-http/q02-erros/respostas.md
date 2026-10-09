@@ -64,4 +64,7 @@ _(Apenas o `[500]`, pois esse codigo http indica um erro, e um erro é exatament
 
 **3.3 Corrija o código, faça um commit e cole aqui o log da execução corrigida.**
 
-_(responda aqui)_
+_(
+[Fri Oct  9 19:45:28 2026] [::1]:35436 Accepted
+[Fri Oct  9 19:45:28 2026] [::1]:35436 [200]: GET /q02-erros/erro.php
+[Fri Oct  9 19:45:28 2026] [::1]:35436 Closing)_
