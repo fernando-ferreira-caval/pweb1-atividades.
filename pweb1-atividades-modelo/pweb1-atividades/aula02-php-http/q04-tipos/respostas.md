@@ -14,14 +14,14 @@
 
 | Linha | Minha previsão | Resultado real |
 |---|---|---|
-| `"10" + 5` |Erro | |
-| `"10" . 5` |105 | |
-| `7 / 2` | 3.5| |
-| `7 % 2` |1 | |
-| `(int) "3.9 kg"` | 3| |
-| `(bool) "0"` |0 | |
-| `(bool) "false"` |false | |
-| `0.1 + 0.2 == 0.3` | true| |**
+| `"10" + 5` |Erro |15 |
+| `"10" . 5` |105 | 105|
+| `7 / 2` | 3.5|3.5 |
+| `7 % 2` |1 | 1|
+| `(int) "3.9 kg"` | 3|3 |
+| `(bool) "0"` |0 |false |
+| `(bool) "false"` |false |true |
+| `0.1 + 0.2 == 0.3` | true|false |**
 
 _(responda aqui)_
 
@@ -74,4 +74,7 @@ _(No primeiro caso, 0 realmente vai representar false para o phph, no segundo o 
 
 **3.3 Acrescente ao arquivo duas linhas `var_dump` criadas por você, com resultados que te surpreenderam ou que você achou interessantes. Explique cada uma.**
 
-_(responda aqui)_
+_(var_dump(5*5 == "5*5");
+var_dump(false);
+
+O resultado de ambas foi false, no primeiro eu quis testar a comparação com aspas, e no segundo se passar o false sem aspas, resultaria em false como eu imaginei.)_
