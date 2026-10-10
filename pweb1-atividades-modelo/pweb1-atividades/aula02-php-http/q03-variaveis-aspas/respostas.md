@@ -14,12 +14,12 @@
 
 | Linha | Minha previsão | Resultado real |
 |---|---|---|
-| `"Aluna: " . $nome` |Maria | |
-| `"Aluna: $nome"` | O nome da variavel| |
-| `'Aluna: $nome'` | o texto desta mesma forma| |
-| `"Cursa o {$semestre}º semestre de $curso"` |o texto desta mesma forma | |
-| `$nome . $curso` |maria, ADS  | |
-| `<?= $nome ?>` | Maria| |**
+| `"Aluna: " . $nome` |Maria | Maria |
+| `"Aluna: $nome"` | O nome da variavel| Maria |
+| `'Aluna: $nome'` | o texto desta mesma forma| Aluna: $nome|
+| `"Cursa o {$semestre}º semestre de $curso"` |o texto desta mesma forma | Cursa o 2º semestre de ADS|
+| `$nome . $curso` |maria, ADS  | MariaADS|
+| `<?= $nome ?>` | Maria| Atalho: Maria|**
 
 _(responda aqui)_
 
