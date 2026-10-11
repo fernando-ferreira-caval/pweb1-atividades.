@@ -8,6 +8,41 @@
 // 1. Dados do perfil (R2)
 //    Crie o array $perfil e o array $projetos.
 
+$perfil = [
+  'nome'=> 'Fernando',
+  'curso' => 'ADS',
+  'campus' => 'IFCE',
+  'cidade' => 'Boa viagem',
+  'apresentacao' => 'Sou Fernando e blablabla',
+  'Habilidade 1' =>[ 'Platinei Dark souls',
+  'HTML & CSS',
+  'Git & Gituhub',
+  'REACT',
+  'Tecnico em informática'
+
+  ]
+];
+
+$projetos = [
+1 => [
+'titulo' => 'Calculadora de média',
+'descricao' => 'Calcula a média de duas notas recebidas pela URL.',
+'tecnologias' => 'PHP, HTML',
+],
+
+2 => [
+'titulo' => 'Calculadora de média',
+'descricao' => 'Calcula a média de duas notas recebidas pela URL.',
+'tecnologias' => 'PHP, HTML',
+],
+
+3 => [
+'titulo' => 'Calculadora de média',
+'descricao' => 'Calcula a média de duas notas recebidas pela URL.',
+'tecnologias' => 'PHP, HTML',
+],
+];
+
 // 2. Tema claro ou escuro (R5 e R6)
 //    Leia o tema da URL ou do cookie, valide e grave o cookie.
 
@@ -27,7 +62,23 @@
   <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-  <!-- 5. Cabeçalho com nome, curso e menu (R3) -->
+  <header class="cabecalho">
+  <nav class="navbar">
+
+    <a>Inicio</a>
+    <a>Habilidades</a>
+    <a>Projetos</a>
+
+  </nav>
+  </header>
+
+  <main>
+    <div class="card_apresentação">
+
+    </div>
+  </main>
+  <footer>
+  </footer>
 
   <!-- 6. Conteúdo da página escolhida (R3 e R4) -->
 

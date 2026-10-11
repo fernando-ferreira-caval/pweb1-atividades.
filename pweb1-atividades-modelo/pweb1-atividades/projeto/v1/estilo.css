@@ -1,2 +1,24 @@
 /* Projeto integrador v1: Perfil do Estudante
    Crie aqui o estilo do seu perfil, com os dois temas (R9). */
+*{
+   padding: 0;
+   margin: 0;
+}
+.cabecalho{
+   width: 100%;
+   height: 5rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   background-color: blueviolet;
+
+}
+.navbar{
+   color:aliceblue;
+   display: flex;
+   gap:5rem;
+   font-size: 2rem;
+}
+.navbar :hover{
+   text-decoration: underline;
+}
