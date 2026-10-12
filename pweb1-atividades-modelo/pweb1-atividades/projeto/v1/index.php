@@ -18,14 +18,35 @@ $perfil = [
   'campus' => 'IFCE',
   'cidade' => 'Boa viagem',
   'apresentacao' => 'Olá! Meu nome é Fernando Everson Ferreira Cavalcante e sou estudante do 4º semestre do curso de Análise e Desenvolvimento de Sistemas (ADS) no IFCE - Campus Boa Viagem. Tenho paixão por tecnologia e foco em desenvolvimento de software, buscando sempre aprimorar minhas habilidades em programação, estrutura de dados e criação de soluções web eficientes. Estou constantemente explorando novas ferramentas e práticas para construir aplicações funcionais, modernas e bem estruturadas.',
-  'Habilidade 1' =>[ 'Platinei Dark souls',
-  'HTML & CSS',
-  'Git & Gituhub',
-  'REACT',
-  'Tecnico em informática'
+  ];
 
-  ]
-];
+  $habilidades = [
+    1 => [
+      'icone' => 'img/html.png',
+      'titulo' => 'HTML'
+    ],
+    2 => [
+      'icone' => 'img/css.png',
+      'titulo' => 'CSS'
+    ],
+    3 => [
+      'icone' => 'img/js.webp',
+      'titulo' => 'JavaScript'
+    ],
+     4 => [
+      'icone' => 'img/c.png',
+      'titulo' => 'C'
+    ],
+    5 => [
+      'icone' => 'img/react.png',
+      'titulo' => 'React'
+    ],
+   
+  ];
+
+  $total = count($habilidades);
+
+ $lista_habilidades = implode(", ", array_column($habilidades, 'titulo'));
 
 $projetos = [
 1 => [
@@ -98,15 +119,35 @@ $projetos = [
         </div>
 </section>
 
+
+<!--pagina Habilidades ==================================================================-->
 <?php elseif($pagina === 'habilidades'): ?>
-  <section>
-    <h1>Sou uma hibilidadde buuuuuuuuuuuuuuu</h1>
+  <section class="habilidades">
+    <div class="titulo_habilidades">
+    <h1>As minhas <?= $total ?> principais habilidades são: </h1>
+    <p><?= $lista_habilidades ?></p>
+    </div>
+
+    <div class="cards_habilidades">
+      <?php foreach($habilidades as $habilidade): ?>
+        <div class="card_habilidade_pequeno">
+          <img src="<?=$habilidade['icone']?>" class="img_habilidades"> 
+          <p><?= $habilidade['titulo'] ?></p>
+        </div>
+        <?php endforeach ?>
+    </div>
   </section>
+
+
+  <!--pagina projetos ==================================================================-->
 
   <?php elseif($pagina === 'projetos'): ?>
   <section>
     <h1>Sou uma projeto buuuuuuuuuuuuuuu</h1>
   </section>
+
+
+  <!--pagina perdida ==================================================================-->
 
   <?php else: ?>
     <h1> A página que você buscou não existe</h1>

@@ -85,3 +85,57 @@
    font-size: 2.2rem;
  
 }
+
+/*CSS pagina Habilidades   */
+
+.habilidades{
+   width: 100%;
+}
+
+.titulo_habilidades{
+   align-items: center;
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 1rem;
+   margin-top: 3rem;
+}
+.titulo_habilidades h1{
+   font-size: 3rem;
+}
+
+.titulo_habilidades p{
+   font-size: 2rem;
+}
+.cards_habilidades {
+  display: flex;
+  justify-content: space-around;             
+  flex-wrap: wrap;
+  margin-top: 5rem;
+}
+
+.card_habilidade_pequeno {
+  background-color: blueviolet ;
+  border-radius: 1rem;
+  padding: 1.5rem 1rem;         
+  color: white;
+  
+  width: 200px;                 
+  display: flex;
+  flex-direction: column;
+  align-items: center;          
+  justify-content: center;      
+  text-align: center;
+}
+
+.img_habilidades {
+  width: 200px;                  
+  height: 200px;                 
+  object-fit: contain;          
+  margin-bottom: 0.8rem;        }
+
+.card_habilidade_pequeno p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
