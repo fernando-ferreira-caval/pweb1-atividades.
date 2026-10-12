@@ -50,21 +50,24 @@ $perfil = [
 
 $projetos = [
 1 => [
-'titulo' => 'Calculadora de média',
-'descricao' => 'Calcula a média de duas notas recebidas pela URL.',
-'tecnologias' => 'PHP, HTML',
+'icone' => 'img/ler+.png',
+'titulo' => 'Ler+',
+'descricao' => 'Curadoria literária nacional que apresenta livros, autores, periodos literarios, editoras e premiações voltados a literatura brasileira',
+'tecnologias' => 'HTML, CSS, JavaScript',
 ],
 
 2 => [
-'titulo' => 'Calculadora de média',
-'descricao' => 'Calcula a média de duas notas recebidas pela URL.',
-'tecnologias' => 'PHP, HTML',
+'icone' => 'img/gt.svg',
+'titulo' => 'Gerenciador de Tarefas',
+'descricao' => 'Gerenciador de tarefas, projeto feito como introdução a React que permite o usuario adicionar tarefas, excluir e marcar como conluida ',
+'tecnologias' => 'HTML, CSS, JavaScript, React',
 ],
 
 3 => [
-'titulo' => 'Calculadora de média',
-'descricao' => 'Calcula a média de duas notas recebidas pela URL.',
-'tecnologias' => 'PHP, HTML',
+'icone' => 'img/empessoa.webp',
+'titulo' => 'EmPessoa',
+'descricao' => 'Acervo reune as obras de Fernando Pessoa e que conta parte da sua história, projeto feito para principalmente consolidar meus conhecimentos em React',
+'tecnologias' => 'HTML, CSS, JavaScript, React',
 ],
 ];
 
@@ -143,7 +146,23 @@ $projetos = [
 
   <?php elseif($pagina === 'projetos'): ?>
   <section>
-    <h1>Sou uma projeto buuuuuuuuuuuuuuu</h1>
+    <div class="titulo_projetos">
+    <h1>Meus Projetos </h1>
+   
+    </div>
+
+    <div class="cards_projetos">
+      <?php foreach($projetos as $projeto): ?>
+        <div class="card_projeto_pequeno">
+          <img src="<?=$projeto['icone']?>" class="img_projetos"> 
+          <div class="card_projeto_texto">
+          <h2><?= $projeto['titulo'] ?></h2>
+          <p><?=  $projeto['descricao']?></p>
+          <p><?= $projeto['tecnologias'] ?></p>
+          </div>
+        </div>
+        <?php endforeach ?>
+    </div>
   </section>
 
 

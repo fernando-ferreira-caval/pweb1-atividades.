@@ -1,6 +1,6 @@
 # Perfil do Estudante: versão 1
 
-**Autor(a):** _(preencha)_
+**Autor(a):** _(Fernando everson Ferreira Cavalcante)_
 
 ## Como executar
 
