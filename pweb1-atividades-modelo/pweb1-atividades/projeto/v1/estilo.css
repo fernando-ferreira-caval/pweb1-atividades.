@@ -22,3 +22,55 @@
 .navbar :hover{
    text-decoration: underline;
 }
+.card_apresentacao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2% auto;
+  padding: 2rem;
+  width: 75%;
+  border-radius: 2rem;
+  background-color:rgb(128, 0, 255);
+  color: white;
+}
+
+.card_apresentacao_1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.imagem_apresentacao {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 1rem;
+
+}
+.texto_apresentacao{
+   font-size: 3rem;
+   list-style: none;
+   padding-left: 0;
+   margin: 0;
+   justify-content: center;
+   align-items: center;
+}
+.texto_apresentacao dd{
+   margin-bottom: 1rem;
+}
+
+.titulo_card{
+   font-size: 4rem;
+   margin-bottom: 2rem;
+}
+
+.card_apresetacao_2 {
+ margin-top: 1rem;
+}
+.texto_apresentacao_2{
+   font-size: 2.2rem;
+ 
+}

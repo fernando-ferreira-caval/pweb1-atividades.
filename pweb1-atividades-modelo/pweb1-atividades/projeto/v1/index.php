@@ -9,11 +9,11 @@
 //    Crie o array $perfil e o array $projetos.
 
 $perfil = [
-  'nome'=> 'Fernando',
-  'curso' => 'ADS',
+  'nome'=> 'Fernando Everson Ferreira Cavalcante',
+  'curso' => 'Análise e Desenvolvimento de Sistemas',
   'campus' => 'IFCE',
   'cidade' => 'Boa viagem',
-  'apresentacao' => 'Sou Fernando e blablabla',
+  'apresentacao' => 'Olá! Meu nome é Fernando Everson Ferreira Cavalcante e sou estudante do 4º semestre do curso de Análise e Desenvolvimento de Sistemas (ADS) no IFCE - Campus Boa Viagem. Tenho paixão por tecnologia e foco em desenvolvimento de software, buscando sempre aprimorar minhas habilidades em programação, estrutura de dados e criação de soluções web eficientes. Estou constantemente explorando novas ferramentas e práticas para construir aplicações funcionais, modernas e bem estruturadas.',
   'Habilidade 1' =>[ 'Platinei Dark souls',
   'HTML & CSS',
   'Git & Gituhub',
@@ -73,9 +73,30 @@ $projetos = [
   </header>
 
   <main>
-    <div class="card_apresentação">
+    <section class="card_apresentacao">
+        <h2 class="titulo_card">Olá, eu sou Fernando </h2>
+        <div class="card_apresentacao_1">
+<img src="/img/eu.jpeg" class="imagem_apresentacao" alt="Foto de perfil ">     
+        <dl class="texto_apresentacao">
+    
+    <dd>Nome:<?= $perfil['nome'] ?></dd>
 
-    </div>
+    
+    <dd>Curso: <?= $perfil['curso'] ?></dd>
+
+ 
+    <dd>Campus: <?= $perfil['campus'] ?></dd>
+
+    
+    <dd>Cidade: <?= $perfil['cidade'] ?></dd>
+  </dl>
+        </div>
+        <div class="card_apresetacao_2" >
+          <p class="texto_apresentacao_2"><?=  $perfil['apresentacao'] ?></p>
+        </div>
+        
+
+</section>
   </main>
   <footer>
   </footer>
