@@ -71,8 +71,18 @@ $projetos = [
 ],
 ];
 
-// 2. Tema claro ou escuro (R5 e R6)
-//    Leia o tema da URL ou do cookie, valide e grave o cookie.
+$tema = $_GET['tema'] ?? $_COOKIE['escuro'] ?? 'claro';
+
+if (!in_array($tema, ['claro', 'escuro'])){
+  $tema = 'tema';
+}
+if (isset($_GET['tema'])){
+  setcookie('tema', $tema, time()  + (86400*30), "/");
+}
+
+$proximo_tema = ($tema === 'claro') ? 'escuro' : 'claro';
+
+
 
 // 3. Rota JSON (R7)
 //    Se a URL tiver ?formato=json, envie o cabeçalho, o JSON e encerre com exit.
@@ -91,7 +101,7 @@ $projetos = [
   <title>Meu perfil</title>
   <link rel="stylesheet" href="estilo.css">
 </head>
-<body>
+<body class="tema-<?= htmlspecialchars($tema) ?>">
   <header class="cabecalho">
   <nav class="navbar">
 
@@ -99,6 +109,7 @@ $projetos = [
     <a href="index.php?pagina=habilidades" class="<?= ($pagina === 'habilidades') ? 'nav_ativo': '' ?>">Habilidades</a>
     <a href="index.php?pagina=projetos" class="<?= ($pagina === 'projetos')? 'nav_ativo': '' ?>">Projetos</a>
 
+    <a href="index.php?pagina=<?=  htmlspecialchars($pagina) ?>&tema=<?= $proximo_tema  ?>" class="botao_tema">Trocar Tema</a>
   </nav>
   </header>
 
@@ -174,11 +185,13 @@ $projetos = [
 
     <?php endif; ?>
   </main>
-  <footer>
+
+
+  <footer class="rodape">
+    <p>Tema atual: <strong><?= ucfirst(htmlspecialchars($tema)) ?></strong></p>
+    <p><a target="_blank">Ver dados em formato JSON</a></p>
+    <p>&copy; <?= date('Y') ?> - <?= htmlspecialchars($perfil['nome']) ?></p>
   </footer>
 
-  <!-- 6. Conteúdo da página escolhida (R3 e R4) -->
-
-  <!-- 7. Rodapé (R8) -->
 </body>
 </html>
