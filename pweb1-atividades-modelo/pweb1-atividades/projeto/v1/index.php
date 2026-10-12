@@ -71,9 +71,9 @@ $projetos = [
   <header class="cabecalho">
   <nav class="navbar">
 
-    <a href="index.php?pagina=inicio">Inicio</a>
-    <a href="index.php?pagina=habilidades">Habilidades</a>
-    <a href="index.php?pagina=projetos">Projetos</a>
+    <a href="index.php?pagina=inicio" class="<?= ($pagina === 'inicio') ? 'nav_ativo': '' ?>">Inicio</a>
+    <a href="index.php?pagina=habilidades" class="<?= ($pagina === 'habilidades') ? 'nav_ativo': '' ?>">Habilidades</a>
+    <a href="index.php?pagina=projetos" class="<?= ($pagina === 'projetos')? 'nav_ativo': '' ?>">Projetos</a>
 
   </nav>
   </header>

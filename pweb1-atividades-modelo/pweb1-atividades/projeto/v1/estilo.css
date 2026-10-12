@@ -21,9 +21,18 @@
    font-size: 2rem;
 
 }
+.navbar a{
+   text-decoration: none;
+  color:white;
+
+}
 .navbar :hover{
    text-decoration: underline;
 }
+.nav_ativo{
+   text-decoration: underline !important; 
+}
+
 .card_apresentacao {
   display: flex;
   flex-direction: column;
