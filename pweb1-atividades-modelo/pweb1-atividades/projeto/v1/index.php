@@ -8,6 +8,10 @@
 // 1. Dados do perfil (R2)
 //    Crie o array $perfil e o array $projetos.
 
+$pagina = $_GET['pagina'] ?? 'inicio';
+
+
+
 $perfil = [
   'nome'=> 'Fernando Everson Ferreira Cavalcante',
   'curso' => 'Análise e Desenvolvimento de Sistemas',
@@ -52,6 +56,8 @@ $projetos = [
 // 4. Qual página mostrar (R3 e R4)
 //    Leia ?pagina= e decida o conteúdo com if/elseif. Página inexistente: 404.
 
+
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -65,14 +71,16 @@ $projetos = [
   <header class="cabecalho">
   <nav class="navbar">
 
-    <a>Inicio</a>
-    <a>Habilidades</a>
-    <a>Projetos</a>
+    <a href="index.php?pagina=inicio">Inicio</a>
+    <a href="index.php?pagina=habilidades">Habilidades</a>
+    <a href="index.php?pagina=projetos">Projetos</a>
 
   </nav>
   </header>
 
   <main>
+<?php if($pagina === 'inicio'): ?>
+
     <section class="card_apresentacao">
         <h2 class="titulo_card">Olá, eu sou Fernando </h2>
         <div class="card_apresentacao_1">
@@ -80,23 +88,31 @@ $projetos = [
         <dl class="texto_apresentacao">
     
     <dd>Nome:<?= $perfil['nome'] ?></dd>
-
-    
     <dd>Curso: <?= $perfil['curso'] ?></dd>
-
- 
     <dd>Campus: <?= $perfil['campus'] ?></dd>
-
-    
     <dd>Cidade: <?= $perfil['cidade'] ?></dd>
   </dl>
         </div>
         <div class="card_apresetacao_2" >
           <p class="texto_apresentacao_2"><?=  $perfil['apresentacao'] ?></p>
         </div>
-        
-
 </section>
+
+<?php elseif($pagina === 'habilidades'): ?>
+  <section>
+    <h1>Sou uma hibilidadde buuuuuuuuuuuuuuu</h1>
+  </section>
+
+  <?php elseif($pagina === 'projetos'): ?>
+  <section>
+    <h1>Sou uma projeto buuuuuuuuuuuuuuu</h1>
+  </section>
+
+  <?php else: ?>
+    <h1> A página que você buscou não existe</h1>
+    <a href="index.php?pagina=inicio">Voltar para a pagina inicial</a>
+
+    <?php endif; ?>
   </main>
   <footer>
   </footer>

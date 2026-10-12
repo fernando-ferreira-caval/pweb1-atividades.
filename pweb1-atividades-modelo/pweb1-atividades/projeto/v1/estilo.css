@@ -14,10 +14,12 @@
 
 }
 .navbar{
+   text-decoration: none;
    color:aliceblue;
    display: flex;
    gap:5rem;
    font-size: 2rem;
+
 }
 .navbar :hover{
    text-decoration: underline;
