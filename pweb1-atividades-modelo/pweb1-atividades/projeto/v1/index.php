@@ -5,22 +5,6 @@
 // toda a lógica em PHP no topo, e o HTML só depois.
 // =====================================================================
 
-// 1. Dados do perfil (R2)
-//    Crie o array $perfil e o array $projetos.
-
-$pagina = $_GET['pagina'] ?? 'inicio';
-$id_projeto = isset($_GET['id']) ? (int)$_GET['id'] : null;
-
-$paginas_validas =['inicio','habilidades', 'projetos', 'projeto'];
-
-if (!in_array($pagina, $paginas_validas)){
-  http_response_code(404);
-}
-elseif($pagina === 'projeto' && (!$id_projeto || !isset($projetos[$id_projeto]))){
-  http_response_code(404);
-}
-
-
   $habilidades = [
     1 => [
       'icone' => 'img/html.png',
@@ -85,6 +69,19 @@ $projetos = [
 ],
 ];
 
+$pagina = $_GET['pagina'] ?? 'inicio';
+$id_projeto = isset($_GET['id']) ? (int)$_GET['id'] : null;
+
+$paginas_validas =['inicio','habilidades', 'projetos', 'projeto'];
+
+if (!in_array($pagina, $paginas_validas)){
+  http_response_code(404);
+}
+elseif($pagina === 'projeto' && (!$id_projeto || !isset($projetos[$id_projeto]))){
+  http_response_code(404);
+}
+
+
 //tema claro e escuro
 $tema = $_GET['tema'] ?? $_COOKIE['tema'] ?? 'claro';
 
@@ -119,11 +116,11 @@ if (isset($_GET['formato']) && $_GET['formato'] === 'json') {
   <header class="cabecalho">
   <nav class="navbar">
 
-    <a href="index.php?pagina=inicio" class="<?= ($pagina === 'inicio') ? 'nav_ativo': '' ?>">Inicio</a>
-    <a href="index.php?pagina=habilidades" class="<?= ($pagina === 'habilidades') ? 'nav_ativo': '' ?>">Habilidades</a>
-    <a href="index.php?pagina=projetos" class="<?= ($pagina === 'projetos')? 'nav_ativo': '' ?>">Projetos</a>
+    <a href="index.php?pagina=inicio" class="<?= htmlspecialchars(($pagina === 'inicio') ? 'nav_ativo': '') ?>">Inicio</a>
+    <a href="index.php?pagina=habilidades" class="<?= htmlspecialchars(($pagina === 'habilidades') ? 'nav_ativo': '') ?>">Habilidades</a>
+    <a href="index.php?pagina=projetos" class="<?= htmlspecialchars(($pagina === 'projetos')? 'nav_ativo': '') ?>">Projetos</a>
 
-    <a href="index.php?pagina=<?= htmlspecialchars($pagina) ?><?= ($pagina === 'projeto' && $id_projeto) ? '&id=' . $id_projeto : '' ?>&tema=<?= $proximo_tema ?>" class="botao_tema">
+    <a href="index.php?pagina=<?= htmlspecialchars($pagina) ?><?= ($pagina === 'projeto' && $id_projeto) ? '&id=' . $id_projeto : '' ?>&tema=<?= htmlspecialchars($proximo_tema) ?>" class="botao_tema">
   Trocar Tema
 </a>
   </nav>
@@ -138,14 +135,14 @@ if (isset($_GET['formato']) && $_GET['formato'] === 'json') {
 <img src="/img/eu.jpeg" class="imagem_apresentacao" alt="Foto de perfil ">     
         <dl class="texto_apresentacao">
     
-    <dd>Nome:<?= $perfil['nome'] ?></dd>
-    <dd>Curso: <?= $perfil['curso'] ?></dd>
-    <dd>Campus: <?= $perfil['campus'] ?></dd>
-    <dd>Cidade: <?= $perfil['cidade'] ?></dd>
+    <dd>Nome:<?= htmlspecialchars($perfil['nome']) ?></dd>
+    <dd>Curso: <?= htmlspecialchars($perfil['curso']) ?></dd>
+    <dd>Campus: <?= htmlspecialchars($perfil['campus']) ?></dd>
+    <dd>Cidade: <?= htmlspecialchars($perfil['cidade']) ?></dd>
   </dl>
         </div>
         <div class="card_apresetacao_2" >
-          <p class="texto_apresentacao_2"><?=  $perfil['apresentacao'] ?></p>
+          <p class="texto_apresentacao_2"><?= htmlspecialchars($perfil['apresentacao']) ?></p>
         </div>
 </section>
 
@@ -154,15 +151,15 @@ if (isset($_GET['formato']) && $_GET['formato'] === 'json') {
 <?php elseif($pagina === 'habilidades'): ?>
   <section class="habilidades">
     <div class="titulo_habilidades">
-    <h1>As minhas <?= $total ?> principais habilidades são: </h1>
-    <p><?= $lista_habilidades ?></p>
+    <h1>As minhas <?= htmlspecialchars($total) ?> principais habilidades são: </h1>
+    <p><?= htmlspecialchars($lista_habilidades) ?></p>
     </div>
 
     <div class="cards_habilidades">
       <?php foreach($habilidades as $habilidade): ?>
         <div class="card_habilidade_pequeno">
-          <img src="<?=$habilidade['icone']?>" class="img_habilidades"> 
-          <p><?= $habilidade['titulo'] ?></p>
+          <img src="<?= htmlspecialchars($habilidade['icone']) ?>" class="img_habilidades"> 
+          <p><?= htmlspecialchars($habilidade['titulo']) ?></p>
         </div>
         <?php endforeach ?>
     </div>
@@ -181,14 +178,14 @@ if (isset($_GET['formato']) && $_GET['formato'] === 'json') {
     <div class="cards_projetos">
       <?php foreach($projetos as $id => $projeto): ?>
         <div class="card_projeto_pequeno">
-          <img src="<?=$projeto['icone']?>" class="img_projetos"> 
+          <img src="<?= htmlspecialchars($projeto['icone']) ?>" class="img_projetos"> 
           <div class="card_projeto_texto">
-          <h2><?= $projeto['titulo'] ?></h2>
-          <p><?=  $projeto['descricao']?></p>
-          <p><?= $projeto['tecnologias'] ?></p>
+          <h2><?= htmlspecialchars($projeto['titulo']) ?></h2>
+          <p><?= htmlspecialchars($projeto['descricao']) ?></p>
+          <p><?= htmlspecialchars($projeto['tecnologias']) ?></p>
           </div>
 
-          <a href="index.php?pagina=projeto&id=<?= $id?>&tema=<?= $tema ?>" class="botao_detalhes">></a>
+          <a href="index.php?pagina=projeto&id=<?= htmlspecialchars($id) ?>&tema=<?= htmlspecialchars($tema) ?>" class="botao_detalhes">></a>
         </div>
         <?php endforeach ?>
     </div>
@@ -211,7 +208,7 @@ if (isset($_GET['formato']) && $_GET['formato'] === 'json') {
         <a href="<?= htmlspecialchars($proj['git']) ?>" target="_blank">Acessar repositório GitHub</a>
       <?php endif; ?>
             <br>
-            <a href="index.php?pagina=projetos&tema=<?= $tema ?>">← Voltar para todos os projetos</a>
+            <a href="index.php?pagina=projetos&tema=<?= htmlspecialchars($tema) ?>">← Voltar para todos os projetos</a>
           </div>
       </div>
     </div>
@@ -230,7 +227,7 @@ if (isset($_GET['formato']) && $_GET['formato'] === 'json') {
         <h1>A página que você buscou não existe! (404)</h1>
       <?php endif; ?>
       <br>
-      <a href="index.php?pagina=inicio&tema=<?= $tema ?>">Voltar para a página inicial</a>
+      <a href="index.php?pagina=inicio&tema=<?= htmlspecialchars($tema) ?>">Voltar para a página inicial</a>
     </section>
 
     <?php endif; ?>
@@ -239,7 +236,7 @@ if (isset($_GET['formato']) && $_GET['formato'] === 'json') {
 
   <footer class="rodape">
     <p>Tema atual: <strong><?= ucfirst(htmlspecialchars($tema)) ?></strong></p>
-<p><a href="index.php?formato=json" target="_blank">Ver dados em formato JSON</a></p>    <p>&copy; <?= date('Y') ?> 
+<p><a href="index.php?formato=json" target="_blank">Ver dados em formato JSON</a></p>    <p>&copy; <?= htmlspecialchars(date('Y')) ?> 
  <?= htmlspecialchars($perfil['nome']) ?></p>
   </footer>
 
