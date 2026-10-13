@@ -9,6 +9,16 @@
 //    Crie o array $perfil e o array $projetos.
 
 $pagina = $_GET['pagina'] ?? 'inicio';
+$id_projeto = isset($_GET['id']) ? (int)$_GET['id'] : null;
+
+$paginas_validas =['inicio','habilidades', 'projetos', 'projeto'];
+
+if (!in_array($pagina, $paginas_validas)){
+  http_response_code(404);
+}
+elseif($pagina === 'projeto' && (!$id_projeto || !isset($projetos[$id_projeto]))){
+  http_response_code(404);
+}
 
 
 
@@ -54,6 +64,7 @@ $projetos = [
 'titulo' => 'Ler+',
 'descricao' => 'Curadoria literária nacional que apresenta livros, autores, periodos literarios, editoras e premiações voltados a literatura brasileira',
 'tecnologias' => 'HTML, CSS, JavaScript',
+'git'=> 'https://github.com/Fernando-Ferreira-Cavalcante/Curadoria-Ler-'
 ],
 
 2 => [
@@ -61,6 +72,7 @@ $projetos = [
 'titulo' => 'Gerenciador de Tarefas',
 'descricao' => 'Gerenciador de tarefas, projeto feito como introdução a React que permite o usuario adicionar tarefas, excluir e marcar como conluida ',
 'tecnologias' => 'HTML, CSS, JavaScript, React',
+'git'=> 'https://github.com/Fernando-Ferreira-Cavalcante/gerenciador-de-tarefas'
 ],
 
 3 => [
@@ -68,10 +80,11 @@ $projetos = [
 'titulo' => 'EmPessoa',
 'descricao' => 'Acervo reune as obras de Fernando Pessoa e que conta parte da sua história, projeto feito para principalmente consolidar meus conhecimentos em React',
 'tecnologias' => 'HTML, CSS, JavaScript, React',
+'git' => 'https://github.com/Fernando-Ferreira-Cavalcante/Em-Pessoa'
 ],
 ];
 
-$tema = $_GET['tema'] ?? $_COOKIE['escuro'] ?? 'claro';
+$tema = $_GET['tema'] ?? $_COOKIE['tema'] ?? 'claro';
 
 if (!in_array($tema, ['claro', 'escuro'])){
   $tema = 'tema';
@@ -83,12 +96,11 @@ if (isset($_GET['tema'])){
 $proximo_tema = ($tema === 'claro') ? 'escuro' : 'claro';
 
 
-
-// 3. Rota JSON (R7)
-//    Se a URL tiver ?formato=json, envie o cabeçalho, o JSON e encerre com exit.
-
-// 4. Qual página mostrar (R3 e R4)
-//    Leia ?pagina= e decida o conteúdo com if/elseif. Página inexistente: 404.
+if (isset($_GET['formato']) && $_GET['formato'] === 'json') {
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode(['perfil' => $perfil, 'projetos' => $projetos], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    exit;
+}
 
 
 
@@ -109,7 +121,9 @@ $proximo_tema = ($tema === 'claro') ? 'escuro' : 'claro';
     <a href="index.php?pagina=habilidades" class="<?= ($pagina === 'habilidades') ? 'nav_ativo': '' ?>">Habilidades</a>
     <a href="index.php?pagina=projetos" class="<?= ($pagina === 'projetos')? 'nav_ativo': '' ?>">Projetos</a>
 
-    <a href="index.php?pagina=<?=  htmlspecialchars($pagina) ?>&tema=<?= $proximo_tema  ?>" class="botao_tema">Trocar Tema</a>
+    <a href="index.php?pagina=<?= htmlspecialchars($pagina) ?><?= ($pagina === 'projeto' && $id_projeto) ? '&id=' . $id_projeto : '' ?>&tema=<?= $proximo_tema ?>" class="botao_tema">
+  Trocar Tema
+</a>
   </nav>
   </header>
 
@@ -163,7 +177,7 @@ $proximo_tema = ($tema === 'claro') ? 'escuro' : 'claro';
     </div>
 
     <div class="cards_projetos">
-      <?php foreach($projetos as $projeto): ?>
+      <?php foreach($projetos as $id => $projeto): ?>
         <div class="card_projeto_pequeno">
           <img src="<?=$projeto['icone']?>" class="img_projetos"> 
           <div class="card_projeto_texto">
@@ -171,17 +185,51 @@ $proximo_tema = ($tema === 'claro') ? 'escuro' : 'claro';
           <p><?=  $projeto['descricao']?></p>
           <p><?= $projeto['tecnologias'] ?></p>
           </div>
+
+          <a href="index.php?pagina=projeto&id=<?= $id?>&tema=<?= $tema ?>" class="botao_detalhes">></a>
         </div>
         <?php endforeach ?>
     </div>
   </section>
 
+      <!--Pagina especifica de projeto-->
+<?php elseif ($pagina === 'projeto' && $id_projeto && isset($projetos[$id_projeto])): ?>
+  <?php $proj =$projetos[$id_projeto]; ?>
+  <section class="detalhes_projeto">
+    <div class="cards_projeto">
+      <div class="card_projet_pequeno">
+        <img src="<?= htmlspecialchars($proj['icone']) ?>" class="img_projeto" alt="<?= htmlspecialchars($proj['titulo']) ?>">
+          <div class="card_projeto_texto">
+            <h2><?= htmlspecialchars($proj['titulo']) ?></h2>
+            <p><?= htmlspecialchars($proj['descricao']) ?></p>
+            <p><strong>Tecnologias utilizadas:</strong> <?= htmlspecialchars($proj['tecnologias']) ?></p>
+            <br>
+
+           <?php if (isset($proj['git'])): ?>
+        <a href="<?= htmlspecialchars($proj['git']) ?>" target="_blank">Acessar repositório GitHub</a>
+      <?php endif; ?>
+            <br>
+            <a href="index.php?pagina=projetos&tema=<?= $tema ?>">← Voltar para todos os projetos</a>
+          </div>
+      </div>
+    </div>
+  </section>
+
+
+
 
   <!--pagina perdida ==================================================================-->
 
   <?php else: ?>
-    <h1> A página que você buscou não existe</h1>
-    <a href="index.php?pagina=inicio">Voltar para a pagina inicial</a>
+    <section class="erro_404" style="text-align: center; margin-top: 5rem;">
+      <?php if ($pagina === 'projeto'): ?>
+        <h1>Projeto não encontrado! (404)</h1>
+      <?php else: ?>
+        <h1>A página que você buscou não existe! (404)</h1>
+      <?php endif; ?>
+      <br>
+      <a href="index.php?pagina=inicio&tema=<?= $tema ?>">Voltar para a página inicial</a>
+    </section>
 
     <?php endif; ?>
   </main>
@@ -189,8 +237,7 @@ $proximo_tema = ($tema === 'claro') ? 'escuro' : 'claro';
 
   <footer class="rodape">
     <p>Tema atual: <strong><?= ucfirst(htmlspecialchars($tema)) ?></strong></p>
-    <p><a target="_blank">Ver dados em formato JSON</a></p>
-    <p>&copy; <?= date('Y') ?> - <?= htmlspecialchars($perfil['nome']) ?></p>
+<p><a href="index.php?formato=json" target="_blank">Ver dados em formato JSON</a></p>    <p>&copy; <?= date('Y') ?> - <?= htmlspecialchars($perfil['nome']) ?></p>
   </footer>
 
 </body>

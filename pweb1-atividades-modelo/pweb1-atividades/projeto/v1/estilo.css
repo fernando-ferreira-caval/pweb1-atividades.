@@ -253,3 +253,84 @@ color:white;
    font-size: 2rem;
    
 }
+
+.botao_detalhes{
+   text-decoration: none;
+   font-size: 2rem;
+   background-color: var(--fundo);
+   color: var(--letra);
+   padding: 1rem;
+   border-radius: 1rem;
+}
+
+/*css projeto especifico*/
+/* Página de Detalhes do Projeto */
+.detalhes_projeto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3% auto;
+  padding: 2.5rem;
+  width: 75%;
+  border-radius: 2rem;
+  background-color: blueviolet;
+  color: var(--letra);
+  box-sizing: border-box;
+}
+
+.detalhes_projeto .cards_projeto {
+  width: 100%;
+}
+
+.detalhes_projeto .card_projet_pequeno {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+/* Imagem do projeto com tamanho destacado igual à apresentação */
+.detalhes_projeto .img_projeto {
+  width: 320px;
+  height: 320px;
+  object-fit: contain;
+  border-radius: 1rem;
+  flex-shrink: 0;
+}
+
+.detalhes_projeto .card_projeto_texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--letra);
+}
+
+.detalhes_projeto .card_projeto_texto h2 {
+  font-size: 3.5rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--letra);
+}
+
+.detalhes_projeto .card_projeto_texto p {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+  color: var(--letra);
+}
+
+/* Links do GitHub e de Voltar */
+.detalhes_projeto .card_projeto_texto a {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--letra);
+  text-decoration: underline;
+  margin-top: 0.5rem;
+  transition: opacity 0.2s;
+}
+
+.detalhes_projeto .card_projeto_texto a:hover {
+  opacity: 0.8;
+}
