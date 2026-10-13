@@ -21,15 +21,6 @@ elseif($pagina === 'projeto' && (!$id_projeto || !isset($projetos[$id_projeto]))
 }
 
 
-
-$perfil = [
-  'nome'=> 'Fernando Everson Ferreira Cavalcante',
-  'curso' => 'Análise e Desenvolvimento de Sistemas',
-  'campus' => 'IFCE',
-  'cidade' => 'Boa viagem',
-  'apresentacao' => 'Olá! Meu nome é Fernando Everson Ferreira Cavalcante e sou estudante do 4º semestre do curso de Análise e Desenvolvimento de Sistemas (ADS) no IFCE - Campus Boa Viagem. Tenho paixão por tecnologia e foco em desenvolvimento de software, buscando sempre aprimorar minhas habilidades em programação, estrutura de dados e criação de soluções web eficientes. Estou constantemente explorando novas ferramentas e práticas para construir aplicações funcionais, modernas e bem estruturadas.',
-  ];
-
   $habilidades = [
     1 => [
       'icone' => 'img/html.png',
@@ -58,6 +49,16 @@ $perfil = [
 
  $lista_habilidades = implode(", ", array_column($habilidades, 'titulo'));
 
+$perfil = [
+  'nome'=> 'Fernando Everson Ferreira Cavalcante',
+  'curso' => 'Análise e Desenvolvimento de Sistemas',
+  'campus' => 'IFCE',
+  'cidade' => 'Boa viagem',
+  'apresentacao' => 'Olá! Meu nome é Fernando Everson Ferreira Cavalcante e sou estudante do 4º semestre do curso de Análise e Desenvolvimento de Sistemas (ADS) no IFCE - Campus Boa Viagem. Tenho paixão por tecnologia e foco em desenvolvimento de software, buscando sempre aprimorar minhas habilidades em programação, estrutura de dados e criação de soluções web eficientes. Estou constantemente explorando novas ferramentas e práticas para construir aplicações funcionais, modernas e bem estruturadas.',
+  'habilidades' => array_column($habilidades, 'titulo')
+  ];
+
+
 $projetos = [
 1 => [
 'icone' => 'img/ler+.png',
@@ -84,10 +85,11 @@ $projetos = [
 ],
 ];
 
+//tema claro e escuro
 $tema = $_GET['tema'] ?? $_COOKIE['tema'] ?? 'claro';
 
 if (!in_array($tema, ['claro', 'escuro'])){
-  $tema = 'tema';
+  $tema = 'claro';
 }
 if (isset($_GET['tema'])){
   setcookie('tema', $tema, time()  + (86400*30), "/");
@@ -237,7 +239,8 @@ if (isset($_GET['formato']) && $_GET['formato'] === 'json') {
 
   <footer class="rodape">
     <p>Tema atual: <strong><?= ucfirst(htmlspecialchars($tema)) ?></strong></p>
-<p><a href="index.php?formato=json" target="_blank">Ver dados em formato JSON</a></p>    <p>&copy; <?= date('Y') ?> - <?= htmlspecialchars($perfil['nome']) ?></p>
+<p><a href="index.php?formato=json" target="_blank">Ver dados em formato JSON</a></p>    <p>&copy; <?= date('Y') ?> 
+ <?= htmlspecialchars($perfil['nome']) ?></p>
   </footer>
 
 </body>
