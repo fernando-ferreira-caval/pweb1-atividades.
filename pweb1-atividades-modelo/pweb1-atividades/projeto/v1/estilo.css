@@ -1,2 +1,336 @@
 /* Projeto integrador v1: Perfil do Estudante
    Crie aqui o estilo do seu perfil, com os dois temas (R9). */
+*{
+   padding: 0;
+   margin: 0;
+}
+
+/*Estilo dos temas*/
+.tema-claro {
+   --fundo: #fcfcfc;
+   --letra: #191919;
+   --borda: blueviolet;
+}
+
+.tema-escuro {
+   --fundo: #191919;
+   --letra: #fcfcfc;
+   --borda: #a855f7;
+}
+
+body {
+   background-color: var(--fundo);
+   color: var(--letra) !important;
+   min-height: 100vh;
+   display: flex;
+   flex-direction: column;
+   margin: 0;
+}
+main{
+   flex:1;
+}
+
+
+.navbar a.botao_tema:hover {
+   text-decoration: none;
+ 
+}
+.cabecalho{
+   width: 100%;
+   height: 6rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   background-color: blueviolet;
+
+}
+.navbar{
+   text-decoration: none;
+   color:aliceblue;
+   display: flex;
+   align-items: center;
+   gap:5rem;
+   font-size: 2rem;
+
+}
+.navbar a{
+   text-decoration: none;
+  color:white;
+
+}
+.navbar :hover{
+   text-decoration: underline;
+}
+.nav_ativo{
+   text-decoration: underline !important; 
+}
+.navbar a.botao_tema {
+   background-color: var(--fundo) !important;
+   color: var(--letra) !important; 
+   border-radius: 1rem;
+   padding: 0.5rem;
+   text-decoration: none !important;
+   font-size: 2rem;
+   display: inline-flex;
+   align-items: center;
+}
+
+
+.navbar a.botao_tema:hover {
+   text-decoration: none !important;
+ 
+}
+.rodape{
+   font-size: 1.5rem;
+      width: 100%;
+   height: 6rem;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   background-color: blueviolet;
+margin-top: 5rem;
+}
+.rodape a{
+   text-decoration: none;
+}
+/*estilo pagina inicio*/
+.card_apresentacao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 2% auto;
+  padding: 2rem;
+  width: 75%;
+  border-radius: 2rem;
+  background-color:rgb(128, 0, 255);
+  color: white;
+}
+
+.card_apresentacao_1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.imagem_apresentacao {
+  width: 350px;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 1rem;
+
+}
+.texto_apresentacao{
+   font-size: 3rem;
+   list-style: none;
+   padding-left: 0;
+   margin: 0;
+   justify-content: center;
+   align-items: center;
+}
+.texto_apresentacao dd{
+   margin-bottom: 1rem;
+}
+
+.titulo_card{
+   font-size: 4rem;
+   margin-bottom: 2rem;
+}
+
+.card_apresetacao_2 {
+ margin-top: 1rem;
+}
+.texto_apresentacao_2{
+   font-size: 2.2rem;
+ 
+}
+
+/*CSS pagina Habilidades   */
+
+.habilidades{
+   width: 100%;
+}
+
+.titulo_habilidades{
+   color: var(--letra);
+   align-items: center;
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 1rem;
+   margin-top: 5rem;
+}
+.titulo_habilidades h1{
+   font-size: 3rem;
+}
+
+.titulo_habilidades p{
+   font-size: 2rem;
+}
+.cards_habilidades {
+  display: flex;
+  justify-content: space-around;             
+  flex-wrap: wrap;
+  margin-top: 8rem;
+}
+
+.card_habilidade_pequeno {
+  background-color: blueviolet ;
+  border-radius: 1rem;
+  padding: 1.5rem 1rem;         
+  color: white;
+  
+  width: 200px;                 
+  display: flex;
+  flex-direction: column;
+  align-items: center;          
+  justify-content: center;      
+  text-align: center;
+}
+
+.img_habilidades {
+  width: 200px;                  
+  height: 200px;                 
+  object-fit: contain;          
+  margin-bottom: 0.8rem;        }
+
+.card_habilidade_pequeno p {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+/*CSS pagina Projetos   */
+
+.titulo_projetos{
+   align-items: center;
+   display:flex;
+   flex-direction: column;
+   justify-content: center;
+   gap: 1rem;
+   margin-top: 2rem;
+   font-size: 3rem;
+   margin-bottom: 2rem;
+   color: var(--letra);
+}
+.cards_projetos{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 2rem;           
+   width: 100%;
+}
+
+.card_projeto_pequeno{
+   background-color: blueviolet;
+   border-radius: 1rem;
+   display: flex;
+   width: 70%;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 2rem;
+   padding: 1rem;
+   
+}
+.img_projetos{
+    width: 150px;                  
+  height: 150px;                 
+  object-fit: contain;    
+  border-radius: 1rem;      
+}
+.card_projeto_texto{
+color:white;
+}
+.card_projeto_texto h2{
+   font-size: 3rem;
+
+}
+.card_projeto_texto p{
+   font-size: 2rem;
+   
+}
+
+.botao_detalhes{
+   text-decoration: none;
+   font-size: 2rem;
+   background-color: var(--fundo);
+   color: var(--letra);
+   padding: 1rem;
+   border-radius: 1rem;
+}
+
+/*css projeto especifico*/
+/* Página de Detalhes do Projeto */
+.detalhes_projeto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3% auto;
+  padding: 2.5rem;
+  width: 75%;
+  border-radius: 2rem;
+  background-color: blueviolet;
+  color: var(--letra);
+  box-sizing: border-box;
+}
+
+.detalhes_projeto .cards_projeto {
+  width: 100%;
+}
+
+.detalhes_projeto .card_projet_pequeno {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+}
+
+/* Imagem do projeto com tamanho destacado igual à apresentação */
+.detalhes_projeto .img_projeto {
+  width: 320px;
+  height: 320px;
+  object-fit: contain;
+  border-radius: 1rem;
+  flex-shrink: 0;
+}
+
+.detalhes_projeto .card_projeto_texto {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: var(--letra);
+}
+
+.detalhes_projeto .card_projeto_texto h2 {
+  font-size: 3.5rem;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--letra);
+}
+
+.detalhes_projeto .card_projeto_texto p {
+  font-size: 1.8rem;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+  color: var(--letra);
+}
+
+/* Links do GitHub e de Voltar */
+.detalhes_projeto .card_projeto_texto a {
+  display: inline-block;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--letra);
+  text-decoration: underline;
+  margin-top: 0.5rem;
+  transition: opacity 0.2s;
+}
+
+.detalhes_projeto .card_projeto_texto a:hover {
+  opacity: 0.8;
+}
